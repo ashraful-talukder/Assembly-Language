@@ -1,0 +1,31 @@
+.MODEL SMALL
+.STACK 100H
+.DATA
+NAM DB 'MD. ASHRAFUL ISLAM TALUKDER$'
+DEG DB 'DEPUTY ASSISTANT DIRECTOR$'
+.CODE
+MAIN PROC
+    
+    MOV AX,@DATA      ;INITIALIGING DATA SEGMENT
+    MOV DS,AX
+    
+    LEA DX,NAM
+    MOV AH,9          ;PRINT STRING
+    INT 21H
+    
+    MOV DL,10
+    MOV AH,2
+    INT 21H           ;NEW LINE
+    MOV DL,13
+    INT 21H
+    
+    LEA DX,DEG
+    MOV AH,9          ;PRINT STRING
+    INT 21H
+  
+    
+    EXIT:
+        MOV AH,4CH
+        INT 21H       ;EXIT FUNCTION
+        MAIN ENDP
+END MAIN
